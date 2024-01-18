@@ -1,0 +1,154 @@
+def get_element_info(search, elements):
+    results = []
+    for element in elements.values():
+        if element['Name'].lower() == search.lower() or element['Atomic Number'] == search or element['Symbol'] == search:
+            results.append(element)
+    return results
+
+# Dictionary containing element information
+ELEMENTS = {
+    '1': {'Name': 'Hydrogen', 'Symbol': 'H', 'Atomic Number': '1', 'Atomic Weight': '1.008', 'Group': '1', 'Period': '1', 'State': 'Gas'},
+    '2': {'Name': 'Helium', 'Symbol': 'He', 'Atomic Number': '2', 'Atomic Weight': '4.0026', 'Group': '18', 'Period': '1', 'State': 'Gas'},
+    '3': {'Name': 'Lithium', 'Symbol': 'Li', 'Atomic Number': '3', 'Atomic Weight': '6.94', 'Group': '1', 'Period': '2', 'State': 'Solid'},
+    '4': {'Name': 'Beryllium', 'Symbol': 'Be', 'Atomic Number': '4', 'Atomic Weight': '9.0122', 'Group': '2', 'Period': '2', 'State': 'Solid'},
+    '5': {'Name': 'Boron', 'Symbol': 'B', 'Atomic Number': '5', 'Atomic Weight': '10.81', 'Group': '13', 'Period': '2', 'State': 'Solid'},
+    '6': {'Name': 'Carbon', 'Symbol': 'C', 'Atomic Number': '6', 'Atomic Weight': '12.01', 'Group': '14', 'Period': '2', 'State': 'Solid'},
+    '7': {'Name': 'Nitrogen', 'Symbol': 'N', 'Atomic Number': '7', 'Atomic Weight': '14.01', 'Group': '15', 'Period': '2', 'State': 'Gas'},
+    '8': {'Name': 'Oxygen', 'Symbol': 'O', 'Atomic Number': '8', 'Atomic Weight': '16.00', 'Group': '16', 'Period': '2', 'State': 'Gas'},
+    '9': {'Name': 'Fluorine', 'Symbol': 'F', 'Atomic Number': '9', 'Atomic Weight': '18.998', 'Group': '17', 'Period': '2', 'State': 'Gas'},
+    '10': {'Name': 'Neon', 'Symbol': 'Ne', 'Atomic Number': '10', 'Atomic Weight': '20.180', 'Group': '18', 'Period': '2', 'State': 'Gas'},
+    '11': {'Name': 'Sodium', 'Symbol': 'Na', 'Atomic Number': '11', 'Atomic Weight': '22.990', 'Group': '1', 'Period': '3', 'State': 'Solid'},
+'12': {'Name': 'Magnesium', 'Symbol': 'Mg', 'Atomic Number': '12', 'Atomic Weight': '24.305', 'Group': '2', 'Period': '3', 'State': 'Solid'},
+'13': {'Name': 'Aluminum', 'Symbol': 'Al', 'Atomic Number': '13', 'Atomic Weight': '26.982', 'Group': '13', 'Period': '3', 'State': 'Solid'},
+'14': {'Name': 'Silicon', 'Symbol': 'Si', 'Atomic Number': '14', 'Atomic Weight': '28.085', 'Group': '14', 'Period': '3', 'State': 'Solid'},
+'15': {'Name': 'Phosphorus', 'Symbol': 'P', 'Atomic Number': '15', 'Atomic Weight': '30.974', 'Group': '15', 'Period': '3', 'State': 'Solid'},
+'16': {'Name': 'Sulfur', 'Symbol': 'S', 'Atomic Number': '16', 'Atomic Weight': '32.06', 'Group': '16', 'Period': '3', 'State': 'Solid'},
+'17': {'Name': 'Chlorine', 'Symbol': 'Cl', 'Atomic Number': '17', 'Atomic Weight': '35.453', 'Group': '17', 'Period': '3', 'State': 'Gas'},
+'18': {'Name': 'Argon', 'Symbol': 'Ar', 'Atomic Number': '18', 'Atomic Weight': '39.948', 'Group': '18', 'Period': '3', 'State': 'Gas'},
+'19': {'Name': 'Potassium', 'Symbol': 'K', 'Atomic Number': '19', 'Atomic Weight': '39.098', 'Group': '1', 'Period': '4', 'State': 'Solid'},
+'20': {'Name': 'Calcium', 'Symbol': 'Ca', 'Atomic Number': '20', 'Atomic Weight': '40.078', 'Group': '2', 'Period': '4', 'State': 'Solid'},
+'21': {'Name': 'Scandium', 'Symbol': 'Sc', 'Atomic Number': '21', 'Atomic Weight': '44.956', 'Group': '3', 'Period': '4', 'State': 'Solid'},
+'22': {'Name': 'Titanium', 'Symbol': 'Ti', 'Atomic Number': '22', 'Atomic Weight': '47.867', 'Group': '4', 'Period': '4', 'State': 'Solid'},
+'23': {'Name': 'Vanadium', 'Symbol': 'V', 'Atomic Number': '23', 'Atomic Weight': '50.942', 'Group': '5', 'Period': '4', 'State': 'Solid'},
+'24': {'Name': 'Chromium', 'Symbol': 'Cr', 'Atomic Number': '24', 'Atomic Weight': '51.996', 'Group': '6', 'Period': '4', 'State': 'Solid'},
+'25': {'Name': 'Manganese', 'Symbol': 'Mn', 'Atomic Number': '25', 'Atomic Weight': '54.938', 'Group': '7', 'Period': '4', 'State': 'Solid'},
+'26': {'Name': 'Iron', 'Symbol': 'Fe', 'Atomic Number': '26', 'Atomic Weight': '55.845', 'Group': '8', 'Period': '4', 'State': 'Solid'},
+'27': {'Name': 'Cobalt', 'Symbol': 'Co', 'Atomic Number': '27', 'Atomic Weight': '58.933', 'Group': '9', 'Period': '4', 'State': 'Solid'},
+'28': {'Name': 'Nickel', 'Symbol': 'Ni', 'Atomic Number': '28', 'Atomic Weight': '58.693', 'Group': '10', 'Period': '4', 'State': 'Solid'},
+'29': {'Name': 'Copper', 'Symbol': 'Cu', 'Atomic Number': '29', 'Atomic Weight': '63.546', 'Group': '11', 'Period': '4', 'State': 'Solid'},
+'30': {'Name': 'Zinc', 'Symbol': 'Zn', 'Atomic Number': '30', 'Atomic Weight': '65.38', 'Group': '12', 'Period': '4', 'State': 'Solid'},
+'31': {'Name': 'Gallium', 'Symbol': 'Ga', 'Atomic Number': '31', 'Atomic Weight': '69.723', 'Group': '13', 'Period': '4', 'State': 'Solid'},
+'32': {'Name': 'Germanium', 'Symbol': 'Ge', 'Atomic Number': '32', 'Atomic Weight': '72.630', 'Group': '14', 'Period': '4', 'State': 'Solid'},
+'33': {'Name': 'Arsenic', 'Symbol': 'As', 'Atomic Number': '33', 'Atomic Weight': '74.922', 'Group': '15', 'Period': '4', 'State': 'Solid'},
+'34': {'Name': 'Selenium', 'Symbol': 'Se', 'Atomic Number': '34', 'Atomic Weight': '78.971', 'Group': '16', 'Period': '4', 'State': 'Solid'},
+'35': {'Name': 'Bromine', 'Symbol': 'Br', 'Atomic Number': '35', 'Atomic Weight': '79.904', 'Group': '17', 'Period': '4', 'State': 'Liquid'},
+'36': {'Name': 'Krypton', 'Symbol': 'Kr', 'Atomic Number': '36', 'Atomic Weight': '83.798', 'Group': '18', 'Period': '4', 'State': 'Gas'},
+'37': {'Name': 'Rubidium', 'Symbol': 'Rb', 'Atomic Number': '37', 'Atomic Weight': '85.468', 'Group': '1', 'Period': '5', 'State': 'Solid'},
+'38': {'Name': 'Strontium', 'Symbol': 'Sr', 'Atomic Number': '38', 'Atomic Weight': '87.62', 'Group': '2', 'Period': '5', 'State': 'Solid'},
+'39': {'Name': 'Yttrium', 'Symbol': 'Y', 'Atomic Number': '39', 'Atomic Weight': '88.906', 'Group': '3', 'Period': '5', 'State': 'Solid'},
+'40': {'Name': 'Zirconium', 'Symbol': 'Zr', 'Atomic Number': '40', 'Atomic Weight': '91.224', 'Group': '4', 'Period': '5', 'State': 'Solid'},
+'41': {'Name': 'Niobium', 'Symbol': 'Nb', 'Atomic Number': '41', 'Atomic Weight': '92.906', 'Group': '5', 'Period': '5', 'State': 'Solid'},
+'42': {'Name': 'Molybdenum', 'Symbol': 'Mo', 'Atomic Number': '42', 'Atomic Weight': '95.95', 'Group': '6', 'Period': '5', 'State': 'Solid'},
+'43': {'Name': 'Technetium', 'Symbol': 'Tc', 'Atomic Number': '43', 'Atomic Weight': '98', 'Group': '7', 'Period': '5', 'State': 'Solid'},
+'44': {'Name': 'Ruthenium', 'Symbol': 'Ru', 'Atomic Number': '44', 'Atomic Weight': '101.07', 'Group': '8', 'Period': '5', 'State': 'Solid'},
+'45': {'Name': 'Rhodium', 'Symbol': 'Rh', 'Atomic Number': '45', 'Atomic Weight': '102.91', 'Group': '9', 'Period': '5', 'State': 'Solid'},
+'46': {'Name': 'Palladium', 'Symbol': 'Pd', 'Atomic Number': '46', 'Atomic Weight': '106.42', 'Group': '10', 'Period': '5', 'State': 'Solid'},
+'47': {'Name': 'Silver', 'Symbol': 'Ag', 'Atomic Number': '47', 'Atomic Weight': '107.87', 'Group': '11', 'Period': '5', 'State': 'Solid'},
+'48': {'Name': 'Cadmium', 'Symbol': 'Cd', 'Atomic Number': '48', 'Atomic Weight': '112.41', 'Group': '12', 'Period': '5', 'State': 'Solid'},
+'49': {'Name': 'Indium', 'Symbol': 'In', 'Atomic Number': '49', 'Atomic Weight': '114.82', 'Group': '13', 'Period': '5', 'State': 'Solid'},
+'50': {'Name': 'Tin', 'Symbol': 'Sn', 'Atomic Number': '50', 'Atomic Weight': '118.71', 'Group': '14', 'Period': '5', 'State': 'Solid'},
+'51': {'Name': 'Antimony', 'Symbol': 'Sb', 'Atomic Number': '51', 'Atomic Weight': '121.76', 'Group': '15', 'Period': '5', 'State': 'Solid'},
+'52': {'Name': 'Tellurium', 'Symbol': 'Te', 'Atomic Number': '52', 'Atomic Weight': '127.60', 'Group': '16', 'Period': '5', 'State': 'Solid'},
+'53': {'Name': 'Iodine', 'Symbol': 'I', 'Atomic Number': '53', 'Atomic Weight': '126.90', 'Group': '17', 'Period': '5', 'State': 'Solid'},
+'54': {'Name': 'Xenon', 'Symbol': 'Xe', 'Atomic Number': '54', 'Atomic Weight': '131.29', 'Group': '18', 'Period': '5', 'State': 'Gas'},
+'55': {'Name': 'Cesium', 'Symbol': 'Cs', 'Atomic Number': '55', 'Atomic Weight': '132.91', 'Group': '1', 'Period': '6', 'State': 'Solid'},
+'56': {'Name': 'Barium', 'Symbol': 'Ba', 'Atomic Number': '56', 'Atomic Weight': '137.33', 'Group': '2', 'Period': '6', 'State': 'Solid'},
+'57': {'Name': 'Lanthanum', 'Symbol': 'La', 'Atomic Number': '57', 'Atomic Weight': '138.91', 'Group': '3', 'Period': '6', 'State': 'Solid'},
+'58': {'Name': 'Cerium', 'Symbol': 'Ce', 'Atomic Number': '58', 'Atomic Weight': '140.12', 'Group': '4', 'Period': '6', 'State': 'Solid'},
+'59': {'Name': 'Praseodymium', 'Symbol': 'Pr', 'Atomic Number': '59', 'Atomic Weight': '140.91', 'Group': '5', 'Period': '6', 'State': 'Solid'},
+'60': {'Name': 'Neodymium', 'Symbol': 'Nd', 'Atomic Number': '60', 'Atomic Weight': '144.24', 'Group': '6', 'Period': '6', 'State': 'Solid'},
+'61': {'Name': 'Promethium', 'Symbol': 'Pm', 'Atomic Number': '61', 'Atomic Weight': '342', 'Group': '7', 'Period': '6', 'State': 'Solid'},
+'62': {'Name': 'Samarium', 'Symbol': 'Sm', 'Atomic Number': '62', 'Atomic Weight': '150.36', 'Group': '8', 'Period': '6', 'State': 'Solid'},
+'63': {'Name': 'Europium', 'Symbol': 'Eu', 'Atomic Number': '63', 'Atomic Weight': '151.96', 'Group': '9', 'Period': '6', 'State': 'Solid'},
+'64': {'Name': 'Gadolinium', 'Symbol': 'Gd', 'Atomic Number': '64', 'Atomic Weight': '157.25', 'Group': '10', 'Period': '6', 'State': 'Solid'},
+'65': {'Name': 'Terbium', 'Symbol': 'Tb', 'Atomic Number': '65', 'Atomic Weight': '158.93', 'Group': '11', 'Period': '6', 'State': 'Solid'},
+'66': {'Name': 'Dysprosium', 'Symbol': 'Dy', 'Atomic Number': '66', 'Atomic Weight': '162.50', 'Group': '12', 'Period': '6', 'State': 'Solid'},
+'67': {'Name': 'Holmium', 'Symbol': 'Ho', 'Atomic Number': '67', 'Atomic Weight': '164.93', 'Group': '13', 'Period': '6', 'State': 'Solid'},
+'68': {'Name': 'Erbium', 'Symbol': 'Er', 'Atomic Number': '68', 'Atomic Weight': '167.26', 'Group': '14', 'Period': '6', 'State': 'Solid'},
+'69': {'Name': 'Thulium', 'Symbol': 'Tm', 'Atomic Number': '69', 'Atomic Weight': '168.93', 'Group': '15', 'Period': '6', 'State': 'Solid'},
+'70': {'Name': 'Ytterbium', 'Symbol': 'Yb', 'Atomic Number': '70', 'Atomic Weight': '173.04', 'Group': '16', 'Period': '6', 'State': 'Solid'},
+'71': {'Name': 'Lutetium', 'Symbol': 'Lu', 'Atomic Number': '71', 'Atomic Weight': '174.97', 'Group': '17', 'Period': '6', 'State': 'Solid'},
+'72': {'Name': 'Hafnium', 'Symbol': 'Hf', 'Atomic Number': '72', 'Atomic Weight': '178.49', 'Group': '4', 'Period': '6', 'State': 'Solid'},
+'73': {'Name': 'Tantalum', 'Symbol': 'Ta', 'Atomic Number': '73', 'Atomic Weight': '180.95', 'Group': '5', 'Period': '6', 'State': 'Solid'},
+'74': {'Name': 'Tungsten', 'Symbol': 'W', 'Atomic Number': '74', 'Atomic Weight': '183.84', 'Group': '6', 'Period': '6', 'State': 'Solid'},
+'75': {'Name': 'Rhenium', 'Symbol': 'Re', 'Atomic Number': '75', 'Atomic Weight': '186.21', 'Group': '7', 'Period': '6', 'State': 'Solid'},
+'76': {'Name': 'Osmium', 'Symbol': 'Os', 'Atomic Number': '76', 'Atomic Weight': '190.23', 'Group': '8', 'Period': '6', 'State': 'Solid'},
+'77': {'Name': 'Iridium', 'Symbol': 'Ir', 'Atomic Number': '77', 'Atomic Weight': '192.22', 'Group': '9', 'Period': '6', 'State': 'Solid'},
+'78': {'Name': 'Platinum', 'Symbol': 'Pt', 'Atomic Number': '78', 'Atomic Weight': '195.08', 'Group': '10', 'Period': '6', 'State': 'Solid'},
+'79': {'Name': 'Gold', 'Symbol': 'Au', 'Atomic Number': '79', 'Atomic Weight': '196.97', 'Group': '11', 'Period': '6', 'State': 'Solid'},
+'80': {'Name': 'Mercury', 'Symbol': 'Hg', 'Atomic Number': '80', 'Atomic Weight': '200.59', 'Group': '12', 'Period': '6', 'State': 'Liquid'},
+'81': {'Name': 'Thallium', 'Symbol': 'Tl', 'Atomic Number': '81', 'Atomic Weight': '204.38', 'Group': '13', 'Period': '6', 'State': 'Solid'},
+'82': {'Name': 'Lead', 'Symbol': 'Pb', 'Atomic Number': '82', 'Atomic Weight': '207.2', 'Group': '14', 'Period': '6', 'State': 'Solid'},
+'83': {'Name': 'Bismuth', 'Symbol': 'Bi', 'Atomic Number': '83', 'Atomic Weight': '208.98', 'Group': '15', 'Period': '6', 'State': 'Solid'},
+'84': {'Name': 'Polonium', 'Symbol': 'Po', 'Atomic Number': '84', 'Atomic Weight': '209', 'Group': '16', 'Period': '6', 'State': 'Solid'},
+'85': {'Name': 'Astatine', 'Symbol': 'At', 'Atomic Number': '85', 'Atomic Weight': '210', 'Group': '17', 'Period': '6', 'State': 'Solid'},
+'86': {'Name': 'Radon', 'Symbol': 'Rn', 'Atomic Number': '86', 'Atomic Weight': '222', 'Group': '18', 'Period': '6', 'State': 'Gas'},
+'87': {'Name': 'Francium', 'Symbol': 'Fr', 'Atomic Number': '87', 'Atomic Weight': '223', 'Group': '1', 'Period': '7', 'State': 'Solid'},
+'88': {'Name': 'Radium', 'Symbol': 'Ra', 'Atomic Number': '88', 'Atomic Weight': '226', 'Group': '2', 'Period': '7', 'State': 'Solid'},
+'89': {'Name': 'Actinium', 'Symbol': 'Ac', 'Atomic Number': '89', 'Atomic Weight': '227', 'Group': '3', 'Period': '7', 'State': 'Solid'},
+'90': {'Name': 'Thorium', 'Symbol': 'Th', 'Atomic Number': '90', 'Atomic Weight': '232.04', 'Group': '4', 'Period': '7', 'State': 'Solid'},
+'91': {'Name': 'Protactinium', 'Symbol': 'Pa', 'Atomic Number': '91', 'Atomic Weight': '231.04', 'Group': '5', 'Period': '7', 'State': 'Solid'},
+'92': {'Name': 'Uranium', 'Symbol': 'U', 'Atomic Number': '92', 'Atomic Weight': '238.03', 'Group': '6', 'Period': '7', 'State': 'Solid'},
+'93': {'Name': 'Neptunium', 'Symbol': 'Np', 'Atomic Number': '93', 'Atomic Weight': '237', 'Group': '7', 'Period': '7', 'State': 'Solid'},
+'94': {'Name': 'Plutonium', 'Symbol': 'Pu', 'Atomic Number': '94', 'Atomic Weight': '244', 'Group': '8', 'Period': '7', 'State': 'Solid'},
+'95': {'Name': 'Americium', 'Symbol': 'Am', 'Atomic Number': '95', 'Atomic Weight': '243', 'Group': '9', 'Period': '7', 'State': 'Solid'},
+'96': {'Name': 'Curium', 'Symbol': 'Cm', 'Atomic Number': '96', 'Atomic Weight': '247', 'Group': '10', 'Period': '7', 'State': 'Solid'},
+'97': {'Name': 'Berkelium', 'Symbol': 'Bk', 'Atomic Number': '97', 'Atomic Weight': '247', 'Group': '11', 'Period': '7', 'State': 'Solid'},
+'98': {'Name': 'Californium', 'Symbol': 'Cf', 'Atomic Number': '98', 'Atomic Weight': '251', 'Group': '12', 'Period': '7', 'State': 'Solid'},
+'99': {'Name': 'Einsteinium', 'Symbol': 'Es', 'Atomic Number': '99', 'Atomic Weight': '252', 'Group': '13', 'Period': '7', 'State': 'Solid'},
+'100': {'Name': 'Fermium', 'Symbol': 'Fm', 'Atomic Number': '100', 'Atomic Weight': '257', 'Group': '14', 'Period': '7', 'State': 'Solid'},
+'101': {'Name': 'Mendelevium', 'Symbol': 'Md', 'Atomic Number': '101', 'Atomic Weight': '258', 'Group': '15', 'Period': '7', 'State': 'Solid'},
+'102': {'Name': 'Nobelium', 'Symbol': 'No', 'Atomic Number': '102', 'Atomic Weight': '259', 'Group': '16', 'Period': '7', 'State': 'Solid'},
+'103': {'Name': 'Lawrencium', 'Symbol': 'Lr', 'Atomic Number': '103', 'Atomic Weight': '262', 'Group': '17', 'Period': '7', 'State': 'Solid'},
+'104': {'Name': 'Rutherfordium', 'Symbol': 'Rf', 'Atomic Number': '104', 'Atomic Weight': '267', 'Group': '4', 'Period': '7', 'State': 'Solid'},
+'105': {'Name': 'Dubnium', 'Symbol': 'Db', 'Atomic Number': '105', 'Atomic Weight': '268', 'Group': '5', 'Period': '7', 'State': 'Solid'},
+'106': {'Name': 'Seaborgium', 'Symbol': 'Sg', 'Atomic Number': '106', 'Atomic Weight': '271', 'Group': '6', 'Period': '7', 'State': 'Solid'},
+'107': {'Name': 'Bohrium', 'Symbol': 'Bh', 'Atomic Number': '107', 'Atomic Weight': '270', 'Group': '7', 'Period': '7', 'State': 'Solid'},
+'108': {'Name': 'Hassium', 'Symbol': 'Hs', 'Atomic Number': '108', 'Atomic Weight': '277', 'Group': '8', 'Period': '7', 'State': 'Solid'},
+'109': {'Name': 'Meitnerium', 'Symbol': 'Mt', 'Atomic Number': '109', 'Atomic Weight': '276', 'Group': '9', 'Period': '7', 'State': 'Solid'},
+'110': {'Name': 'Darmstadtium', 'Symbol': 'Ds', 'Atomic Number': '110', 'Atomic Weight': '281', 'Group': '10', 'Period': '7', 'State': 'Solid'},
+'111': {'Name': 'Roentgenium', 'Symbol': 'Rg', 'Atomic Number': '111', 'Atomic Weight': '280', 'Group': '11', 'Period': '7', 'State': 'Solid'},
+'112': {'Name': 'Copernicium', 'Symbol': 'Cn', 'Atomic Number': '112', 'Atomic Weight': '285', 'Group': '12', 'Period': '7', 'State': 'Solid'},
+'113': {'Name': 'Nihonium', 'Symbol': 'Nh', 'Atomic Number': '113', 'Atomic Weight': '284', 'Group': '13', 'Period': '7', 'State': 'Solid'},
+'114': {'Name': 'Flerovium', 'Symbol': 'Fl', 'Atomic Number': '114', 'Atomic Weight': '289', 'Group': '14', 'Period': '7', 'State': 'Solid'},
+'115': {'Name': 'Moscovium', 'Symbol': 'Mc', 'Atomic Number': '115', 'Atomic Weight': '288', 'Group': '15', 'Period': '7', 'State': 'Solid'},
+'116': {'Name': 'Livermorium', 'Symbol': 'Lv', 'Atomic Number': '116', 'Atomic Weight': '293', 'Group': '16', 'Period': '7', 'State': 'Solid'},
+'117': {'Name': 'Tennessine', 'Symbol': 'Ts', 'Atomic Number': '117', 'Atomic Weight': '294', 'Group': '17', 'Period': '7', 'State': 'Solid'},
+'118': {'Name': 'Oganesson', 'Symbol': 'Og', 'Atomic Number': '118', 'Atomic Weight': '294', 'Group': '18', 'Period': '7', 'State': 'Solid'},
+'119': {'Name': 'Hamadanium', 'Symbol': 'ඞ', 'Atomic Number': '119', 'Atomic Weight': 'Infinite', 'Group': '19', 'Period': '7', 'State': 'Unknown'},
+    # Add more elements here
+    # ...
+}
+
+# Loop to continuously enter search terms
+while True:
+    search_term = input("Enter element name, symbol, or atomic number (or 'exit' to quit): ")
+    if search_term.lower() == 'exit':
+        break
+
+    # Call function to get element info based on search term
+    element_info = get_element_info(search_term, ELEMENTS)
+
+    # Display element information if found
+    if element_info:
+        for element in element_info:
+            print("Element Name:", element['Name'])
+            print("Symbol:", element['Symbol'])
+            print("Atomic Number:", element['Atomic Number'])
+            print("Atomic Weight:", element['Atomic Weight'])
+            print("Group:", element['Group'])
+            print("Period:", element['Period'])
+            print("State:", element['State'])
+            print()
+    else:
+        print("No element found with the given name, symbol, or atomic number.")
